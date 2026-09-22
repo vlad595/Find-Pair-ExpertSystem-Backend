@@ -17,6 +17,7 @@ namespace DTO
     }
     public class UpdateCandidateDto : CreateCandidateDto
     {
+        
     }
     public class CandidateDto
     {

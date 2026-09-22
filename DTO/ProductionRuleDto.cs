@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using Models;
 
 namespace DTO
 {
@@ -21,6 +22,7 @@ namespace DTO
     }
     public class UpdateProductionRuleDto : CreateProductionRuleDto
     {
+        
     }
     public class ProductionRuleDto
     {
@@ -30,5 +32,14 @@ namespace DTO
         public string ConditionValue { get; set; } = string.Empty;
         public string ResultFact { get; set; } = string.Empty;
         public string ResultValue { get; set; } = string.Empty;
+        public ProductionRuleDto(ProductionRule rule)
+        {
+            this.Id = rule.Id;
+            this.Description = rule.Description;
+            this.ConditionFact = rule.ConditionFact;
+            this.ConditionValue = rule.ConditionValue;
+            this.ResultFact = rule.ResultFact;
+            this.ResultValue = rule.ResultValue;
+        }
     }
 }

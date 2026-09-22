@@ -5,7 +5,6 @@ namespace Models
 {
     public class ProductionRule
     {
-        [Key]
         public Guid Id { get; set; }
         public string Description { get; set; } = string.Empty;
         [Required]

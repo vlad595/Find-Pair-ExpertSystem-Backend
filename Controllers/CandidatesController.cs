@@ -1,7 +1,7 @@
 using System;
 using DTO;
 using Microsoft.AspNetCore.Mvc;
-using Service;
+using Services;
 
 namespace Controllers
 {
@@ -9,8 +9,8 @@ namespace Controllers
     [Route("api/[controller]")]
     public class CandidatesController : ControllerBase
     {
-        private readonly CandidateService _service;
-        public CandidatesController(CandidateService service)
+        private readonly ICandidateService _service;
+        public CandidatesController(ICandidateService service)
         {
             _service = service;
         }

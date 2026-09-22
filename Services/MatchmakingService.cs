@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Models;
 using DTO;
 using System.Collections.Generic;
-using Backend.Migrations;
 using Microsoft.EntityFrameworkCore;
 
 namespace Services

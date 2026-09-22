@@ -6,7 +6,6 @@ namespace Models
 {
     public class CandidateProfile
     {
-        [Key]
         public Guid Id { get; set; }
         [Required]
         public string FullName { get; set; } = string.Empty;

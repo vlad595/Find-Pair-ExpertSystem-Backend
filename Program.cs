@@ -6,6 +6,7 @@ using System.Text;
 using Microsoft.OpenApi;
 using Data;
 using Services;
+using Npgsql;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,12 +28,17 @@ builder.Services.AddControllers();
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
+var dataSourceBuilder = new NpgsqlDataSourceBuilder(connectionString);
+dataSourceBuilder.EnableDynamicJson();
+var dataSource = dataSourceBuilder.Build();
+
 builder.Services.AddDbContext<KPZContext>(options => {
-    options.UseNpgsql(connectionString);
+    options.UseNpgsql(dataSource);
 });
 
 builder.Services.AddScoped<IKnowledgeBaseService, KnowledgeBaseService>();
 builder.Services.AddScoped<IMatchmakingService, MatchmakingService>();
+builder.Services.AddScoped<ICandidateService, CandidateService>();
 builder.Services.AddScoped<InferenceEngineService>();
 
 var app = builder.Build();

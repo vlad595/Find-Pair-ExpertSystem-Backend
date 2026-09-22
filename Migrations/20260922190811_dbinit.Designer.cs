@@ -13,7 +13,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Backend.Migrations
 {
     [DbContext(typeof(KPZContext))]
-    [Migration("20260921190154_dbinit")]
+    [Migration("20260922190811_dbinit")]
     partial class dbinit
     {
         /// <inheritdoc />
@@ -28,11 +28,9 @@ namespace Backend.Migrations
 
             modelBuilder.Entity("Models.CandidateProfile", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                        .HasColumnType("uuid");
 
                     b.Property<int>("Age")
                         .HasColumnType("integer");

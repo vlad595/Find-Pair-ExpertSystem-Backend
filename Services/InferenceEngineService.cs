@@ -14,17 +14,14 @@ namespace Services
                 
                 foreach (var rule in rules)
                 {
-                    if (currentFacts.TryGetValue(rule.ConditionFact, out var value) && 
-                        value == rule.ConditionValue && 
-                        (!currentFacts.ContainsKey(rule.ResultFact) || currentFacts[rule.ResultFact] != rule.ResultValue))
+                    if (currentFacts.TryGetValue(rule.ConditionFact, out var value) && value == rule.ConditionValue && (!currentFacts.ContainsKey(rule.ResultFact) || currentFacts[rule.ResultFact] != rule.ResultValue))
                     {
                         currentFacts[rule.ResultFact] = rule.ResultValue;
-                        factsChanged = true; 
+                        factsChanged = true;
                     }
                 }
             } 
             while (factsChanged); 
-            
             return currentFacts;
         }
     }

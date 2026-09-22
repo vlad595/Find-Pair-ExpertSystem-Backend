@@ -14,9 +14,9 @@ namespace Controllers
     [ApiController]
     public class ConsultationController : ControllerBase
     {
-        private readonly MatchmakingService _matchmakingService;
+        private readonly IMatchmakingService _matchmakingService;
 
-        public ConsultationController(MatchmakingService matchmakingService)
+        public ConsultationController(IMatchmakingService matchmakingService)
         {
             _matchmakingService = matchmakingService;
         }

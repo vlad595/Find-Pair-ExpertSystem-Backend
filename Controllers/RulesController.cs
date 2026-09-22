@@ -14,9 +14,9 @@ namespace Controllers
     [ApiController]
     public class RulesController : ControllerBase
     {
-        private readonly KnowledgeBaseService _service;
+        private readonly IKnowledgeBaseService _service;
 
-        public RulesController(KnowledgeBaseService service)
+        public RulesController(IKnowledgeBaseService service)
         {
             _service = service;
         }

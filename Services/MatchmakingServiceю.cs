@@ -29,9 +29,7 @@ namespace Services
 
             var enrichedClientFacts = _inferenceEngine.RunInference(clientFacts, rules);
 
-            var candidates = await _context.Candidates
-                .Where(c => c.Gender == targetGender)
-                .ToListAsync();
+            var candidates = await _context.Candidates.Where(c => c.Gender == targetGender).ToListAsync();
 
             CandidateProfile? bestMatch = null;
             int maxScore = -1;
@@ -39,7 +37,6 @@ namespace Services
             foreach (var candidate in candidates)
             {
                 var candidateFacts = _inferenceEngine.RunInference(candidate.Facts, rules);
-                
                 int currentScore = CalculateCompatibilityScore(enrichedClientFacts, candidateFacts);
 
                 if (currentScore > maxScore)

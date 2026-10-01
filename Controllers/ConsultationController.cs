@@ -24,12 +24,17 @@ namespace Controllers
         [HttpPost("match")]
         public async Task<ActionResult<MatchResultDto>> FindMatch([FromBody] MatchRequestDto request)
         {
-            if (request == null || request.Facts == null || request.Facts.Count == 0)
+            if (request == null || request.Facts == null)
             {
                 return BadRequest();
             }
 
-            var result = await _matchmakingService.FindBestMatchAsync(request.Facts, request.TargetGender);
+            if (request.MinAge > request.MaxAge)
+            {
+                return BadRequest("Мінімальний вік не може бути більшим за максимальний.");
+            }
+
+            var result = await _matchmakingService.FindBestMatchAsync(request.Facts, request.TargetGender, request.MinAge, request.MaxAge);
 
             if (result.BestMatch == null)
             {
